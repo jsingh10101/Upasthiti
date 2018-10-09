@@ -17,10 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mDrawerLayout =(DrawerLayout)findViewById(R.id.drawer);
-        mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        //mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
 
-        mDrawerLayout.addDrawerListener(mToggle);
-        mToggle.syncState();
+        //mDrawerLayout.addDrawerListener(mToggle);
+        //mToggle.syncState();
         //getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 

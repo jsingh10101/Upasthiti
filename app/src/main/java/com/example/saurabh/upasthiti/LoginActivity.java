@@ -8,6 +8,7 @@ import android.widget.Button;
 
 
 public class LoginActivity extends AppCompatActivity {
+
     Button log;
 
     @Override
