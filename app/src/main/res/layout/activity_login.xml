@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/loginback4"
-    tools:context="com.example.saurabh.upasthiti.MainActivity">
+    tools:context="com.example.saurabh.upasthiti.LoginActivity">
 
         <ImageView
             android:id="@+id/imageView"
@@ -73,16 +73,16 @@
             android:layout_marginTop="10dp" />
 
         <Button
+            android:id="@+id/id_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/id_login"
-            android:text="  Login  "
-            android:textSize="20dp"
-            android:textColor="#FFFFFF"
             android:layout_below="@+id/cb"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:background="@drawable/button_bg"/>
+            android:background="@drawable/button_bg"
+            android:text="  Login  "
+            android:textColor="#FFFFFF"
+            android:textSize="20dp" />
 
 </RelativeLayout>
 
