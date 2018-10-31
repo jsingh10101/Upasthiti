@@ -16,25 +16,25 @@
             android:src="@drawable/gkvlogo" />
 
         <android.support.design.widget.TextInputLayout
+            android:id="@+id/namelayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/namelayout1"
             android:layout_below="@+id/imageView"
-            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp">
+            android:layout_marginTop="75dp">
 
                 <EditText
+                    android:id="@+id/edt1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/edt1"
-                    android:textSize="25dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#00BFFF"
                     android:hint="Employee ID"
                     android:inputType="text"
-                    android:backgroundTint="#00BFFF"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"/>
+                    android:textSize="25dp" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/namelayout2"
             android:layout_below="@+id/namelayout1"
+            app:passwordToggleEnabled="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp">

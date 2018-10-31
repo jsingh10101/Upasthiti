@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -34,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         un="root";
         pass="root";
         db="GKV2016";
-        ip="192.168.43.2:49170";
+        ip="13.127.144.24:49170";
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,11 +55,11 @@ public class LoginActivity extends AppCompatActivity {
                 ConnectionURL="jdbc:jtds:sqlserver://"+ip+";DatabaseName="+db+";user="+un+";password="+pass+";";
 
                 con= DriverManager.getConnection(ConnectionURL);
-                if(con==null)
-                    throw new Exception();
+                if(con.isClosed())
+                    Toast.makeText(getBaseContext(),"Connection Failed",Toast.LENGTH_SHORT).show();
                 String empuser= username.getText().toString();
                 String emppass = pwd.getText().toString();
-                String query = "select CODE from GKV2016.dbo.EMPMASTER WHERE CODE = "+empuser+" AND PWD = "+emppass+";";
+                String query = "select CODE from GKV2016.dbo.EMPMASTER WHERE CODE = \'"+empuser+"\' AND PWD = \'"+emppass+"\';";
 
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery(query);
