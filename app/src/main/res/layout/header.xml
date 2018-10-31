@@ -7,11 +7,12 @@
     android:background="@drawable/navigation_bar_headerbg">
 
     <ImageView
+        android:id="@+id/himage"
         android:layout_width="105dp"
         android:layout_height="105dp"
-        android:src="@drawable/user"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:src="@drawable/user" />
 
 </RelativeLayout>

@@ -33,6 +33,12 @@
             android:background="@color/colorPrimaryDark"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <include
+            layout="@layout/layout_main"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
     </android.support.design.widget.AppBarLayout>
 
 
