@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/profile" android:title="Profile" android:icon="@drawable/ic_person_black_24dp"></item>
-    <item android:id="@+id/daily" android:title="Daily Attendance" android:icon="@drawable/ic_daily_black_24dp"></item>
-    <item android:id="@+id/monthly" android:title="Monthly Report" android:icon="@drawable/ic_monthly_black_24dp"></item>
-    <item android:id="@+id/yearly" android:title="Yearly Report" android:icon="@drawable/ic_yearly_black_24dp"></item>
-    <item android:id="@+id/aboutus" android:title="About Us" android:icon="@drawable/ic_aboutus_black_24dp"></item>
-    <item android:id="@+id/rate" android:title="Rate Us" android:icon="@drawable/ic_rate_black_24dp"></item>
-    <item android:id="@+id/logout" android:title="Logout" android:icon="@drawable/ic_logout_black_24dp"></item>
+
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/ic_person_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/daily"
+        android:title="Daily Attendance"
+        android:icon="@drawable/ic_daily_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/monthly"
+        android:title="Monthly Report"
+        android:icon="@drawable/ic_monthly_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/yearly"
+        android:title="Yearly Report"
+        android:icon="@drawable/ic_yearly_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/aboutus"
+        android:title="About Us"
+        android:icon="@drawable/ic_aboutus_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/rate"
+        android:title="Rate Us"
+        android:icon="@drawable/ic_rate_black_24dp">
+    </item>
+
+    <item
+        android:id="@+id/logout"
+        android:title="Logout"
+        android:icon="@drawable/ic_logout_black_24dp">
+    </item>
 
 </menu>
