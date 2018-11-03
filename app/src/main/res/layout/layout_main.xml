@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="25dp"
-                android:text="Wiliam@gmail.com"
+                android:text="FACULTY"
                 android:textColor="@color/darkgray"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -104,11 +104,32 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="25dp"
-                android:text="Show all comments"
+                android:text="POST"
                 android:textColor="@color/darkgray"
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp">
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_monthly_black_24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:text="DEPARTMENT"
+                android:textColor="@color/darkgray"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/button"
