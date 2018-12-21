@@ -2,20 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
+    android:orientation="vertical"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="250dp">>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:background="@drawable/loginback3"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:background="@drawable/loginback3"
+            android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/limage"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
@@ -23,6 +26,7 @@
                 android:src="@drawable/user" />
 
             <TextView
+                android:id="@+id/tname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -36,10 +40,10 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="360dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -55,6 +59,7 @@
                 android:src="@drawable/ic_person_black_24dp" />
 
             <TextView
+                android:id="@+id/tfacl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -77,8 +82,9 @@
                 android:src="@drawable/ic_aboutus_black_24dp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tphone"
 
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="25dp"
@@ -100,6 +106,7 @@
                 android:src="@drawable/ic_monthly_black_24dp" />
 
             <TextView
+                android:id="@+id/tpost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -122,6 +129,7 @@
                 android:src="@drawable/ic_monthly_black_24dp" />
 
             <TextView
+                android:id="@+id/tdept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
