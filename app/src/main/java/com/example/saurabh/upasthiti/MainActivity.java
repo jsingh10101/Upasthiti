@@ -1,6 +1,8 @@
 package com.example.saurabh.upasthiti;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle ;
+    SharedPreferences sp;
     Connection con;
     TextView name,post,facl,dept,phone;
     ImageView lim,him;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sp=getSharedPreferences("attendance", Context.MODE_PRIVATE);
         Toolbar toolbar=(Toolbar) findViewById(R.id.toolbar);
         name=findViewById(R.id.tname);
         post=findViewById(R.id.tpost);
@@ -46,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         phone=findViewById(R.id.tphone);
         lim=findViewById(R.id.limage);
         him=findViewById(R.id.himage);
-        code=getIntent().getStringExtra("code");
         mDrawerLayout =(DrawerLayout)findViewById(R.id.drawer);
         mToggle = new ActionBarDrawerToggle(this,mDrawerLayout,toolbar,R.string.open,R.string.close);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
         ConSql s=new ConSql();
+        code=sp.getString("code",null);
         String query = "SELECT NAME,POST,MOBILE,FACULTY,DEPT,PHOTO FROM GKV2016.dbo.EMPMASTER WHERE CODE=\'"+code+"\';";
         s.execute(query);
         try {
