@@ -6,9 +6,12 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
+
+import java.util.concurrent.ExecutionException;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -27,6 +30,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         sp=getSharedPreferences("attendance", Context.MODE_PRIVATE);
         code=sp.getString("code",null);
+
 
         imageView=(ImageView)findViewById(R.id.image);
 

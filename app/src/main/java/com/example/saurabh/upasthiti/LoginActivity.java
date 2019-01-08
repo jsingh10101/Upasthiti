@@ -21,6 +21,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.concurrent.ExecutionException;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -47,31 +48,31 @@ public class LoginActivity extends AppCompatActivity {
                 String query = "select NAME from GKV2016.dbo.EMPMASTER WHERE CODE = \'" + empuser + "\' AND PWD = \'" + emppass + "\';";
                 dd.execute(query);
                 try {
-                    ResultSet rs=dd.get();
-                    if (rs.next()) {
-                        final String name = rs.getString(1);
-                        //GKV/183,J1009832
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                SharedPreferences.Editor e=sp.edit();
-                                e.putString("code",empuser);
-                                e.apply();
-                                Toast.makeText(getBaseContext(), "Welcome Mr." + name, Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        Intent obj = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(obj);
-                        finish();
-                    } else {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getBaseContext(), "user not found", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                } catch (Exception e) {
+                    final String s=(dd.get())[0];
+                    //GKV/183,J1009832
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            SharedPreferences.Editor e=sp.edit();
+                            e.putString("code",empuser);
+                            e.apply();
+                            Toast.makeText(getBaseContext(), "Welcome Mr." + s, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    Intent obj = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(obj);
+                    finish();
+                }catch (ArrayIndexOutOfBoundsException e){
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getBaseContext(), "User Not Found", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+                catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
             }

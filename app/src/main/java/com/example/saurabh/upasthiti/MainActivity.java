@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -61,22 +62,18 @@ public class MainActivity extends AppCompatActivity {
         String query = "SELECT NAME,POST,MOBILE,FACULTY,DEPT,PHOTO FROM GKV2016.dbo.EMPMASTER WHERE CODE=\'"+code+"\';";
         s.execute(query);
         try {
-            final ResultSet rs=s.get();
-            Log.v("Column Count",""+rs.getMetaData().getColumnCount());
-            if(rs.next())
+            final String[] sd=(s.get())[0].split("]");
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         try {
-                            Toast.makeText(getBaseContext(), rs.getString("NAME")+" "+rs.getMetaData().getColumnCount(), Toast.LENGTH_SHORT).show();
-                            name.setText(rs.getString("NAME"));
-                            post.setText(rs.getString("POST"));
-                            phone.setText(rs.getString("MOBILE"));
-                            facl.setText(rs.getString("FACULTY"));
-                            dept.setText(rs.getString("DEPT"));
-                            Blob bs=rs.getBlob("PHOTO");
-                            if(bs!=null){
-                                byte[] bytes=bs.getBytes(1,(int)bs.length());
+                            name.setText(sd[0]);
+                            post.setText(sd[1]);
+                            phone.setText(sd[2]);
+                            facl.setText(sd[3]);
+                            dept.setText(sd[4]);
+                            if(sd[5]!=null){
+                                byte[] bytes=Base64.decode(sd[5],Base64.DEFAULT);
 //                                bs.free();
                                 Bitmap ss= BitmapFactory.decodeByteArray(bytes,0,bytes.length);
                                 lim.setImageBitmap(ss);
@@ -90,10 +87,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
-
-            rs.close();
-        }catch (Exception e)
+        }catch (ArrayIndexOutOfBoundsException e){
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(getBaseContext(), "User Not Found", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
         }
@@ -117,72 +119,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-   /* private class ConSql extends AsyncTask<String, String, Connection> {
-        private String un, pass, db, ip;
-
-
-        public ConSql() {
-            un = "root";
-            pass = "root";
-            db = "GKV2016";
-            ip = "13.127.144.24:49170";
-        }
-
-        @Override
-        protected Connection doInBackground(String... strings) {
-            String ConnectionURL;
-            try {
-                Class.forName("net.sourceforge.jtds.jdbc.Driver");
-                ConnectionURL = "jdbc:jtds:sqlserver://" + ip + ";DatabaseName=" + db + ";user=" + un + ";password=" + pass + ";";
-
-                con = DriverManager.getConnection(ConnectionURL);
-
-                String query = "SELECT NAME,POST,FACULTY,DEPT,PHOTO FROM GKV2016.dbo.EMPMASTER WHERE CODE=\'"+code+"\';";
-                Statement st = con.createStatement();
-                final ResultSet rs = st.executeQuery(query);
-                if (rs.next()) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                name.setText(rs.getString("NAME"));
-                                post.setText(rs.getString("POST"));
-                                facl.setText(rs.getString("FACULTY"));
-                                dept.setText(rs.getString("DEPT"));
-                                Blob bs=rs.getBlob("PHOTO");
-                                if(bs!=null){
-                                byte[] bytes=bs.getBytes(1,(int)bs.length());
-                                bs.free();
-                                Bitmap ss= BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                                lim.setImageBitmap(ss);
-                                him.setImageBitmap(ss);}
-                            }
-                            catch (Exception e) {
-                                Log.e("Error", e.getMessage());
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-
-
-                } else {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(getBaseContext(), "user not found", Toast.LENGTH_SHORT).show();
-                         }
-                    });
-                }
-
-                rs.close();
-                st.close();
-                con.close();
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return null;
-        }
-    */
 
 }
